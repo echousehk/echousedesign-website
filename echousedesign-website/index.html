@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECHOUSE DESIGN | Luxury Interior Design & Renovation Hong Kong</title>
+    <!-- 網站小圖標 (Favicon) -->
+    <link rel="icon" type="image/x-icon" href="https://imgur.com/pNBSYDO.jpg">
+    <meta name="description" content="ECHOUSE DESIGN is Hong Kong's premier interior design & renovation studio with 10+ years expertise in Private Housing, HOS, Public Housing, and Commercial Offices.">
+    <meta name="keywords" content="Hong Kong Interior Design, Renovation HK, Private Flat Fitout, HOS Renovation, Public Housing Interior, Commercial Office Fitout, ECHOUSE DESIGN">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            50: '#FAF7F0',
+                            100: '#F3ECDB',
+                            200: '#E4D5B5',
+                            300: '#D4BD8E',
+                            400: '#C5A059',
+                            500: '#B58D43',
+                            600: '#946E2F',
+                            700: '#735120',
+                        },
+                        charcoal: {
+                            900: '#0F0F10',
+                            800: '#18181A',
+                            700: '#242427',
+                            500: '#4A4A50',
+                            300: '#8E8E93',
+                            100: '#E5E5EA',
+                            50: '#F2F2F7',
+                        },
+                        warm: {
+                            white: '#FAFAFA',
+                            sand: '#F8F6F0',
+                            cream: '#EFECE6',
+                            border: '#E2DEC9'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    letterSpacing: {
+                        widest: '.2em',
+                        superwide: '.35em'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FFFFFF;
+            color: #18181A;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .font-heading {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .nav-glass {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(226, 222, 201, 0.5);
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAFAFA;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C5A059;
+            border-radius: 3px;
+        }
+
+        .img-zoom-container {
+            overflow: hidden;
+        }
+        .img-zoom-container img {
+            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .img-zoom-container:hover img {
+            transform: scale(1.05);
+        }
+
+        .btn-gold {
+            background: #18181A;
+            color: #FFFFFF;
+            border: 1px solid #C5A059;
+            transition: all 0.3s ease;
+        }
+        .btn-gold:hover {
+            background: #C5A059;
+            color: #FFFFFF;
+            box-shadow: 0 10px 25px -5px rgba(197, 160, 89, 0.3);
+        }
+
+        /* Page switcher animation */
+        .page-view {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+        }
+        .page-view.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .nav-link.active-link {
+            color: #C5A059;
+            border-bottom: 2px solid #C5A059;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-gold-400 selection:text-white flex flex-col min-h-screen">
+
+    <!-- HEADER / NAVIGATION BAR -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 nav-glass transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 h-20 md:h-24 flex items-center justify-between">
+            
+            <!-- BRAND LOGO: Top-Left Image Logo -->
+            <a href="javascript:void(0)" onclick="navigateTo('home')" class="flex items-center space-x-3 group shrink-0">
+                <img src="https://imgur.com/6S7WCF9.jpg" alt="ECHOUSE DESIGN" class="h-12 md:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+            </a>
+
+            <!-- DESKTOP MULTI-PAGE NAVIGATION LINKS -->
+            <nav class="hidden lg:flex items-center space-x-8">
+                <button onclick="navigateTo('home')" id="nav-home" class="nav-link text-xs uppercase tracking-widest font-semibold text-charcoal-700 hover:text-gold-500 py-2 transition-colors active-link">Home</button>
+                <button onclick="navigateTo('portfolio')" id="nav-portfolio" class="nav-link text-xs uppercase tracking-widest font-semibold text-charcoal-700 hover:text-gold-500 py-2 transition-colors">Portfolio</button>
+                <button onclick="navigateTo('tips')" id="nav-tips" class="nav-link text-xs uppercase tracking-widest font-semibold text-charcoal-700 hover:text-gold-500 py-2 transition-colors">Renovation Tips</button>
+                <button onclick="navigateTo('about')" id="nav-about" class="nav-link text-xs uppercase tracking-widest font-semibold text-charcoal-700 hover:text-gold-500 py-2 transition-colors">About Us</button>
+                <button onclick="navigateTo('contact')" id="nav-contact" class="nav-link text-xs uppercase tracking-widest font-semibold text-charcoal-700 hover:text-gold-500 py-2 transition-colors">Contact</button>
+            </nav>
+
+            <!-- ACTION BUTTONS -->
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="https://wa.me/85295607556" target="_blank" class="flex items-center space-x-2 text-xs uppercase tracking-wider font-semibold text-charcoal-800 hover:text-emerald-600 px-3 py-2 rounded transition-colors">
+                    <i class="fa-brands fa-whatsapp text-base text-emerald-600"></i>
+                    <span>WhatsApp VIP</span>
+                </a>
+                <button onclick="navigateTo('contact')" class="btn-gold px-5 py-2.5 text-xs uppercase tracking-widest font-semibold rounded-none">
+                    Free Consultation
+                </button>
+            </div>
+
+            <!-- MOBILE MENU BUTTON -->
+            <button id="mobile-menu-btn" class="lg:hidden text-charcoal-900 focus:outline-none p-2" aria-label="Toggle Navigation">
+                <i class="fa-solid fa-bars-staggered text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- MOBILE MENU DRAWER -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-warm-cream px-6 py-8 transition-all">
+            <div class="flex flex-col space-y-4">
+                <button onclick="navigateTo('home')" class="mobile-link text-left text-sm uppercase tracking-widest font-semibold text-charcoal-800 py-2 border-b border-gray-100">Home</button>
+                <button onclick="navigateTo('portfolio')" class="mobile-link text-left text-sm uppercase tracking-widest font-semibold text-charcoal-800 py-2 border-b border-gray-100">Portfolio Gallery</button>
+                <button onclick="navigateTo('tips')" class="mobile-link text-left text-sm uppercase tracking-widest font-semibold text-charcoal-800 py-2 border-b border-gray-100">Renovation Tips</button>
+                <button onclick="navigateTo('about')" class="mobile-link text-left text-sm uppercase tracking-widest font-semibold text-charcoal-800 py-2 border-b border-gray-100">About ECHOUSE</button>
+                <button onclick="navigateTo('contact')" class="mobile-link text-left text-sm uppercase tracking-widest font-semibold text-charcoal-800 py-2 border-b border-gray-100">Contact Us</button>
+                <div class="pt-4 flex flex-col space-y-3">
+                    <a href="https://wa.me/85295607556" target="_blank" class="w-full text-center py-3 bg-emerald-50 text-emerald-700 text-xs font-semibold tracking-widest uppercase flex items-center justify-center space-x-2">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>WhatsApp Direct</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN MULTI-PAGE CONTENT CONTAINER -->
+    <main class="flex-grow pt-24">
+
+        <!-- ================= PAGE 1: HOME PAGE ================= -->
+        <div id="page-home" class="page-view active">
+            
+            <!-- Hero Section -->
+            <section class="relative min-h-[85vh] flex items-center bg-warm-sand overflow-hidden">
+                <div class="max-w-7xl mx-auto px-6 md:px-12 py-20 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <div class="lg:col-span-7">
+                        <div class="inline-flex items-center space-x-3 bg-white px-4 py-2 border border-warm-cream mb-6">
+                            <span class="w-2 h-2 rounded-full bg-gold-400 animate-pulse"></span>
+                            <span class="text-xs uppercase tracking-superwide text-charcoal-700 font-semibold">10+ Years Excellence in Hong Kong</span>
+                        </div>
+
+                        <h1 class="text-4xl sm:text-5xl md:text-6xl font-light text-charcoal-900 leading-[1.1] mb-6">
+                            Tailored Interior Architecture & <br>
+                            <span class="font-normal italic text-gold-500">Spatial Craftsmanship.</span>
+                        </h1>
+
+                        <p class="text-base text-charcoal-600 font-normal leading-relaxed mb-8 max-w-xl">
+                            Specializing in high-end private residences, public housing transformations, HOS developments, and executive commercial fit-outs across Hong Kong. Over 10 years of trusted architectural execution.
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row items-stretch sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                            <button onclick="navigateTo('portfolio')" class="btn-gold px-8 py-4 text-xs uppercase tracking-widest font-semibold flex items-center justify-center space-x-3">
+                                <span>Explore Portfolio Gallery</span>
+                                <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </button>
+                            <button onclick="navigateTo('contact')" class="px-8 py-4 bg-white text-charcoal-900 text-xs uppercase tracking-widest font-semibold border border-charcoal-900/20 text-center hover:bg-warm-sand transition-all">
+                                Request Free Quote
+                            </button>
+                        </div>
+
+                        <!-- Stats Row -->
+                        <div class="grid grid-cols-3 gap-6 pt-12 mt-12 border-t border-gray-200">
+                            <div>
+                                <span class="block text-3xl font-heading font-light text-charcoal-900">10+</span>
+                                <span class="text-[11px] uppercase tracking-wider text-charcoal-500 font-medium">Years Expertise</span>
+                            </div>
+                            <div>
+                                <span class="block text-3xl font-heading font-light text-gold-500">500+</span>
+                                <span class="text-[11px] uppercase tracking-wider text-charcoal-500 font-medium">Real HK Cases</span>
+                            </div>
+                            <div>
+                                <span class="block text-3xl font-heading font-light text-charcoal-900">100%</span>
+                                <span class="text-[11px] uppercase tracking-wider text-charcoal-500 font-medium">Quality Guarantee</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 relative">
+                        <div class="img-zoom-container bg-white p-3 border border-warm-cream shadow-xl relative group">
+                            <img src="https://imgur.com/azYbaWm.jpg" onerror="this.src='https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=85'" alt="ECHOUSE Luxury Project" class="w-full h-[450px] object-cover">
+                            
+                            <!-- ECHOUSE Logo Watermark Overlay -->
+                            <div class="absolute bottom-6 right-6 bg-charcoal-900/85 backdrop-blur-md border border-gold-400/40 p-2.5 shadow-2xl pointer-events-none flex items-center space-x-2">
+                                <img src="https://imgur.com/9DumQ5G.jpg" alt="ECHOUSE Watermark" class="h-7 w-auto object-contain opacity-90">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Key Housing Categories Overview -->
+            <section class="py-20 bg-white">
+                <div class="max-w-7xl mx-auto px-6 md:px-12">
+                    <div class="text-center max-w-3xl mx-auto mb-16">
+                        <span class="text-xs uppercase tracking-superwide text-gold-500 font-semibold block mb-2">Our Expertise</span>
+                        <h2 class="text-3xl sm:text-4xl font-light text-charcoal-900 mb-4">Four Major Design Sectors</h2>
+                        <div class="w-12 h-0.5 bg-gold-400 mx-auto"></div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div onclick="navigateTo('portfolio', 'private')" class="p-8 bg-warm-sand border border-warm-cream hover:border-gold-400 transition-all cursor-pointer group">
+                            <i class="fa-solid fa-building text-3xl text-gold-500 mb-6"></i>
+                            <h3 class="text-xl font-normal text-charcoal-900 mb-2 group-hover:text-gold-500 transition-colors">Private Housing</h3>
+                            <p class="text-xs text-charcoal-500 leading-relaxed mb-4">Luxury private flat transformations, bespoke joinery, marble finishes, and open layout reconfigurations.</p>
+                            <span class="text-[10px] uppercase tracking-widest text-gold-600 font-bold flex items-center space-x-2">
+                                <span>Browse Cases</span>
+                                <i class="fa-solid fa-chevron-right text-[8px]"></i>
+                            </span>
+                        </div>
+
+                        <div onclick="navigateTo('portfolio', 'hos')" class="p-8 bg-warm-sand border border-warm-cream hover:border-gold-400 transition-all cursor-pointer group">
+                            <i class="fa-solid fa-house-chimney-window text-3xl text-gold-500 mb-6"></i>
+                            <h3 class="text-xl font-normal text-charcoal-900 mb-2 group-hover:text-gold-500 transition-colors">HOS Flats</h3>
+                            <p class="text-xs text-charcoal-500 leading-relaxed mb-4">Optimized space utilization, custom built-in furniture, partitions, and durable materials for HOS units.</p>
+                            <span class="text-[10px] uppercase tracking-widest text-gold-600 font-bold flex items-center space-x-2">
+                                <span>Browse Cases</span>
+                                <i class="fa-solid fa-chevron-right text-[8px]"></i>
+                            </span>
+                        </div>
+
+                        <div onclick="navigateTo('portfolio', 'public')" class="p-8 bg-warm-sand border border-warm-cream hover:border-gold-400 transition-all cursor-pointer group">
+                            <i class="fa-solid fa-city text-3xl text-gold-500 mb-6"></i>
+                            <h3 class="text-xl font-normal text-charcoal-900 mb-2 group-hover:text-gold-500 transition-colors">Public Housing</h3>
+                            <p class="text-xs text-charcoal-500 leading-relaxed mb-4">Innovative space-saving designs, hidden storage solutions, and rapid clean fit-out standards.</p>
+                            <span class="text-[10px] uppercase tracking-widest text-gold-600 font-bold flex items-center space-x-2">
+                                <span>Browse Cases</span>
+                                <i class="fa-solid fa-chevron-right text-[8px]"></i>
+                            </span>
+                        </div>
+
+                        <div onclick="navigateTo('portfolio', 'commercial')" class="p-8 bg-warm-sand border border-warm-cream hover:border-gold-400 transition-all cursor-pointer group">
+                            <i class="fa-solid fa-briefcase text-3xl text-gold-500 mb-6"></i>
+                            <h3 class="text-xl font-normal text-charcoal-900 mb-2 group-hover:text-gold-500 transition-colors">Commercial & Office</h3>
+                            <p class="text-xs text-charcoal-500 leading-relaxed mb-4">Corporate headquarters, retail flagships, showroom spaces, and compliant building approvals.</p>
+                            <span class="text-[10px] uppercase tracking-widest text-gold-600 font-bold flex items-center space-x-2">
+                                <span>Browse Cases</span>
+                                <i class="fa-solid fa-chevron-right text-[8px]"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Renovation Tips Homepage Preview Section -->
+            <section class="py-20 bg-warm-sand/60 border-t border-warm-cream">
+                <div class="max-w-7xl mx-auto px-6 md:px-12">
+                    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                        <div>
+                            <span class="text-xs uppercase tracking-superwide text-gold-500 font-semibold block mb-2">Expert Knowledge</span>
+                            <h2 class="text-3xl sm:text-4xl font-light text-charcoal-900">Renovation Tips & Insights</h2>
+                        </div>
+                        <button onclick="navigateTo('tips')" class="mt-4 md:mt-0 text-xs font-semibold uppercase tracking-widest text-gold-600 hover:text-charcoal-900 transition-colors flex items-center space-x-2">
+                            <span>Explore All Articles</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <!-- Article 1 Preview Card -->
+                        <div onclick="openTipArticle(1)" class="p-8 bg-white border border-warm-cream hover:border-gold-400 transition-all cursor-pointer group flex flex-col justify-between shadow-sm hover:shadow-md">
+                            <div>
+                                <span class="text-[10px] uppercase tracking-widest font-bold text-gold-600 block mb-2">Tile & Material Selection</span>
+                                <h3 class="text-lg font-normal text-charcoal-900 group-hover:text-gold-500 transition-colors mb-3">Summit Ceramic Tiles: HK EcMall Exclusive & Anti-Trap Guide</h3>
+                                <p class="text-xs text-charcoal-500 leading-relaxed mb-6 line-clamp-3">
+                                    Discover top-tier Summit porcelain tiles exclusively at EcMall in HK. Save 20-40% compared to street shops with guaranteed authenticity.
+                                </p>
+                            </div>
+                            <span class="text-[11px] font-semibold text-charcoal-900 group-hover:text-gold-500 flex items-center space-x-2">
+                                <span>Read Article</span>
+                                <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </span>
+                        </div>
+
+                        <!-- Article 2 Preview Card -->
+                        <div onclick="openTipArticle(2)" class="p-8 bg-white border border-warm-cream hover:border-gold-400 transition-all cursor-pointer group flex flex-col justify-between shadow-sm hover:shadow-md">
+                            <div>
+                                <span class="text-[10px] uppercase tracking-widest font-bold text-gold-600 block mb-2">Masonry & Surfaces</span>
+                                <h3 class="text-lg font-normal text-charcoal-900 group-hover:text-gold-500 transition-colors mb-3">Window Sill Stone Guide: Materials, Pricing & Maintenance</h3>
+                                <p class="text-xs text-charcoal-500 leading-relaxed mb-6 line-clamp-3">
+                                    Compare natural marble, artificial quartz, and sintered stone for window bay ledges. Learn waterproofing along window frames and care tips.
+                                </p>
+                            </div>
+                            <span class="text-[11px] font-semibold text-charcoal-900 group-hover:text-gold-500 flex items-center space-x-2">
+                                <span>Read Article</span>
+                                <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </span>
+                        </div>
+
+                        <!-- Article 3 Preview Card -->
+                        <div onclick="openTipArticle(3)" class="p-8 bg-white border border-warm-cream hover:border-gold-400 transition-all cursor-pointer group flex flex-col justify-between shadow-sm hover:shadow-md">
+                            <div>
+                                <span class="text-[10px] uppercase tracking-widest font-bold text-gold-600 block mb-2">Custom Furniture</span>
+                                <h3 class="text-lg font-normal text-charcoal-900 group-hover:text-gold-500 transition-colors mb-3">Custom TV Cabinets: Dimensions, Materials & Budgeting</h3>
+                                <p class="text-xs text-charcoal-500 leading-relaxed mb-6 line-clamp-3">
+                                    Master TV console design from floating features to E0 plywood construction, cable concealment, and ergonomic viewing height rules.
+                                </p>
+                            </div>
+                            <span class="text-[11px] font-semibold text-charcoal-900 group-hover:text-gold-500 flex items-center space-x-2">
+                                <span>Read Article</span>
+                                <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+        <!-- ================= PAGE 2: PORTFOLIO GALLERY (DEDICATED PAGE) ================= -->
+        <div id="page-portfolio" class="page-view">
+            <section class="py-16 bg-white min-h-[80vh]">
+                <div class="max-w-7xl mx-auto px-6 md:px-12">
+                    
+                    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b border-gray-100 pb-8">
+                        <div>
+                            <span class="text-xs uppercase tracking-superwide text-gold-500 font-semibold block mb-2">Our Work</span>
+                            <h1 class="text-3xl sm:text-5xl font-light text-charcoal-900">Portfolio & Real Cases Gallery</h1>
+                        </div>
+                        <p class="text-xs text-charcoal-500 max-w-md mt-4 md:mt-0 leading-relaxed">
+                            Filter our extensive renovation library by housing sector. Reserved spaces ready for expanding case entries.
+                        </p>
+                    </div>
+
+                    <!-- Category Tab Filter Buttons -->
+                    <div class="flex flex-wrap gap-3 mb-10">
+                        <button onclick="filterPortfolio('all')" id="tab-all" class="port-tab-btn active px-6 py-2.5 text-xs font-semibold tracking-wider uppercase border border-gold-400 bg-gold-400 text-white">All Projects</button>
+                        <button onclick="filterPortfolio('private')" id="tab-private" class="port-tab-btn px-6 py-2.5 text-xs font-semibold tracking-wider uppercase border border-gray-200 text-charcoal-700 hover:border-gold-400">Private Housing</button>
+                        <button onclick="filterPortfolio('hos')" id="tab-hos" class="port-tab-btn px-6 py-2.5 text-xs font-semibold tracking-wider uppercase border border-gray-200 text-charcoal-700 hover:border-gold-400">HOS Flats</button>
+                        <button onclick="filterPortfolio('public')" id="tab-public" class="port-tab-btn px-6 py-2.5 text-xs font-semibold tracking-wider uppercase border border-gray-200 text-charcoal-700 hover:border-gold-400">Public Housing</button>
+                        <button onclick="filterPortfolio('commercial')" id="tab-commercial" class="port-tab-btn px-6 py-2.5 text-xs font-semibold tracking-wider uppercase border border-gray-200 text-charcoal-700 hover:border-gold-400">Commercial / Office</button>
+                    </div>
+
+                    <!-- Projects Grid Container -->
+                    <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Populated dynamically via JavaScript -->
+                    </div>
+
+                    <!-- Ample Expansion Notice -->
+                    <div class="mt-16 p-8 bg-warm-sand border border-warm-cream text-center">
+                        <span class="text-xs font-semibold uppercase tracking-widest text-gold-600 block mb-1">More Projects Coming Soon</span>
+                        <p class="text-xs text-charcoal-500">We continuously update our case library with real client handovers across Hong Kong.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+        <!-- ================= PAGE 3: RENOVATION TIPS / BLOG (DEDICATED PAGE) ================= -->
+        <div id="page-tips" class="page-view">
+            <section class="py-16 bg-white min-h-[80vh]">
+                <div class="max-w-7xl mx-auto px-6 md:px-12">
+                    
+                    <div class="mb-12 border-b border-gray-100 pb-8">
+                        <span class="text-xs uppercase tracking-superwide text-gold-500 font-semibold block mb-2">Expert Guidance</span>
+                        <h1 class="text-3xl sm:text-5xl font-light text-charcoal-900 mb-4">Renovation Tips & Insights</h1>
+                        <p class="text-xs text-charcoal-500 max-w-2xl leading-relaxed">
+                            Essential Hong Kong interior design and construction articles written by ECHOUSE DESIGN specialists to guide your renovation planning and material decisions.
+                        </p>
+                    </div>
+
+                    <!-- 6 Articles Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="tips-grid">
+                        <!-- Article 1 -->
+                        <div class="bg-warm-sand border border-warm-cream p-8 flex flex-col justify-between hover:border-gold-400 transition-all group cursor-pointer" onclick="openTipArticle(1)">
+                            <div>
+                                <span class="text-[10px] uppercase tracking-widest font-bold text-gold-600 block mb-2">Tile & Material Selection</span>
+                                <h3 class="text-xl font-normal text-charcoal-900 group-hover:text-gold-500 transition-colors mb-3">Summit Ceramic Tiles: HK EcMall Exclusive & Anti-Trap Guide</h3>
+                                <p class="text-xs text-charcoal-600 leading-relaxed mb-6 line-clamp-3">
+                                    Discover top-tier Summit porcelain tiles exclusively available at EcMall in Hong Kong. Learn how to save 20-40% compared to traditional street shops with guaranteed Grade-A quality.
+                                </p>
+                            </div>
+                            <span class="text-[11px] font-semibold text-charcoal-900 group-hover:text-gold-500 flex items-center space-x-2">
+                                <span>Read Full Article</span>
+                                <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </span>
+                        </div>
+
+                        <!-- Article 2 -->
+                        <div class="bg-warm-sand border border-warm-cream p-8 flex flex-col justify-between hover:border-gold-400 transition-all group cursor-pointer" onclick="openTipArticle(2)">
+                            <div>
+                                <span class="text-[10px] uppercase tracking-widest font-bold text-gold-600 block mb-2">Masonry & Surfaces</span>
+                                <h3 class="text-xl font-normal text-charcoal-900 group-hover:text-gold-500 transition-colors mb-3">Window Sill Stone Guide: Material Types, Pricing & Maintenance</h3>
+                                <p class="text-xs text-charcoal-600 leading-relaxed mb-6 line-clamp-3">
+                                    A complete guide to selecting window sill ledges in Hong Kong flats. Compare natural marble, artificial quartz, and sintered stone along with moisture insulation and care tips.
+                                </p>
+                            </div>
+                            <span class="text-[11px] font-semibold text-charcoal-900 group-hover:text-gold-500 flex items-center space-x-2">
+                                <span>Read Full Article</span>
+                                <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </span>
+                        </div>
+
+                        <!-- Article 3 -->
+                        <div class="bg-warm-sand border border-warm-cream p-8 flex flex-col justify-between hover:border-gold-400 transition-all group cursor-pointer" onclick="openTipArticle(3)">
+                            <div>
+                                <span class="text-[10px] uppercase tracking-widest font-bold text-gold-600 block mb-2">Custom Furniture</span>
+                                <h3 class="text-xl font-normal text-charcoal-900 group-hover:text-gold-500 transition-colors mb-3">Custom TV Cabinets: Dimensions, Materials, Styles & Costing</h3>
+                                <p class="text-xs text-charcoal-600 leading-relaxed mb-6 line-clamp-3">
+                                    Everything you need to know about custom TV console design: floating vs floor-standing styles, E0 low-formaldehyde plywood, fluted feature walls, and cord management rules.
+                                </p>
+                            </div>
+                            <span class="text-[11px] font-semibold text-charcoal-900 group-hover:text-gold-500 flex items-center space-x-2">
+                                <span>Read Full Article</span>
+                                <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </span>
+                        </div>
+
+                        <!-- Article 4 -->
+                        <div class="bg-warm-sand border border-warm-cream p-8 flex flex-col justify-between hover:border-gold-400 transition-all group cursor-pointer" onclick="openTipArticle(4)">
+                            <div>
+                                <span class="text-[10px] uppercase tracking-widest font-bold text-gold-600 block mb-2">Tools & Equipment</span>
+                                <h3 class="text-xl font-normal text-charcoal-900 group-hover:text-gold-500 transition-colors mb-3">Hong Kong Hardware Store Guide: Essential Tools & Procurement</h3>
+                                <p class="text-xs text-charcoal-600 leading-relaxed mb-6 line-clamp-3">
+                                    A practical guide for homeowners shopping at HK hardware shops. Discover essential inspection tools, high-grade door hinges, drawer slides, and site monitoring equipment.
+                                </p>
+                            </div>
+                            <span class="text-[11px] font-semibold text-charcoal-900 group-hover:text-gold-500 flex items-center space-x-2">
+                                <span>Read Full Article</span>
+                                <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </span>
+                        </div>
+
+                        <!-- Article 5 -->
+                        <div class="bg-warm-sand border border-warm-cream p-8 flex flex-col justify-between hover:border-gold-400 transition-all group cursor-pointer" onclick="openTipArticle(5)">
+                            <div>
+                                <span class="text-[10px] uppercase tracking-widest font-bold text-gold-600 block mb-2">Finishing & Craftsmanship</span>
+                                <h3 class="text-xl font-normal text-charcoal-900 group-hover:text-gold-500 transition-colors mb-3">Tile Grout Powder Masterclass: Functions, Color Matching & Care</h3>
+                                <p class="text-xs text-charcoal-600 leading-relaxed mb-6 line-clamp-3">
+                                    Understand tile grout powder vs epoxy resin grout. Learn how color choice transforms tile layouts, prevents mold growth in HK humidity, and stops joint cracking.
+                                </p>
+                            </div>
+                            <span class="text-[11px] font-semibold text-charcoal-900 group-hover:text-gold-500 flex items-center space-x-2">
+                                <span>Read Full Article</span>
+                                <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </span>
+                        </div>
+
+                        <!-- Article 6 -->
+                        <div class="bg-warm-sand border border-warm-cream p-8 flex flex-col justify-between hover:border-gold-400 transition-all group cursor-pointer" onclick="openTipArticle(6)">
+                            <div>
+                                <span class="text-[10px] uppercase tracking-widest font-bold text-gold-600 block mb-2">Inspection & Quality Audit</span>
+                                <h3 class="text-xl font-normal text-charcoal-900 group-hover:text-gold-500 transition-colors mb-3">Spotting Rental & Handover Traps: 5 Rules & 7 Critical Checkpoints</h3>
+                                <p class="text-xs text-charcoal-600 leading-relaxed mb-6 line-clamp-3">
+                                    Protect your investment with professional flat inspection tactics. Learn 5 verification techniques to expose property traps and 7 must-check handover inspection points.
+                                </p>
+                            </div>
+                            <span class="text-[11px] font-semibold text-charcoal-900 group-hover:text-gold-500 flex items-center space-x-2">
+                                <span>Read Full Article</span>
+                                <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
+
+        <!-- ================= PAGE 4: ABOUT US (DEDICATED PAGE) ================= -->
+        <div id="page-about" class="page-view">
+            <section class="py-16 bg-white min-h-[80vh]">
+                <div class="max-w-7xl mx-auto px-6 md:px-12">
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
+                        <div class="lg:col-span-6">
+                            <span class="text-xs uppercase tracking-superwide text-gold-500 font-semibold block mb-2">About ECHOUSE DESIGN</span>
+                            <h1 class="text-3xl sm:text-5xl font-light text-charcoal-900 mb-6">10+ Years of Hong Kong Architectural Excellence</h1>
+                            <div class="space-y-4 text-xs text-charcoal-600 leading-relaxed font-normal">
+                                <p class="font-semibold text-charcoal-900 border-l-2 border-gold-400 pl-4 py-1 text-sm">
+                                    ECHOUSE DESIGN is a premier Hong Kong interior architectural studio providing comprehensive interior design, space planning, and bespoke construction management.
+                                </p>
+                                <p>
+                                    With over a decade of proven experience across Hong Kong Island, Kowloon, and the New Territories, our team has executed over 500 high-standard interior projects ranging from luxury private estates and HOS flats to public housing transformations and corporate office headquarters.
+                                </p>
+                                <p>
+                                    We prioritize transparent pricing, eco-friendly material selections, strict quality assurance, and zero hidden costs—delivering peace of mind for both local homeowners and international clients.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-6">
+                            <div class="bg-warm-sand p-8 border border-warm-cream shadow-md">
+                                <h3 class="text-xl font-heading text-charcoal-900 mb-6">Why Clients Choose ECHOUSE DESIGN</h3>
+                                <div class="space-y-6">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="w-10 h-10 bg-white flex items-center justify-center text-gold-500 shrink-0 border border-gray-200">
+                                            <i class="fa-solid fa-award text-lg"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-sm font-bold text-charcoal-900">10+ Years Proven Expertise</h4>
+                                            <p class="text-xs text-charcoal-500 mt-1">Seasoned interior architectural team familiar with all HK building codes and estate guidelines.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex items-start space-x-4">
+                                        <div class="w-10 h-10 bg-white flex items-center justify-center text-gold-500 shrink-0 border border-gray-200">
+                                            <i class="fa-solid fa-shield-halved text-lg"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-sm font-bold text-charcoal-900">Fixed Cost Transparency</h4>
+                                            <p class="text-xs text-charcoal-500 mt-1">Itemized transparent quotations with zero hidden surcharges or budget escalation.</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Public Housing -->
+                                    <div class="flex items-start space-x-4">
+                                        <div class="w-10 h-10 bg-white flex items-center justify-center text-gold-500 shrink-0 border border-gray-200">
+                                            <i class="fa-solid fa-city text-lg"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-sm font-bold text-charcoal-900">Public Housing Renovation</h4>
+                                            <p class="text-xs text-charcoal-500 mt-1">High-quality design and construction teams offering tailored public housing renovation packages, making it effortless to find your ideal design solution.</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- HOS Flat Renovation -->
+                                    <div class="flex items-start space-x-4">
+                                        <div class="w-10 h-10 bg-white flex items-center justify-center text-gold-500 shrink-0 border border-gray-200">
+                                            <i class="fa-solid fa-house-chimney-window text-lg"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-sm font-bold text-charcoal-900">HOS Flat Renovation</h4>
+                                            <p class="text-xs text-charcoal-500 mt-1">From HOS budget planning to design inspirations, our expert team helps you navigate the renovation timeline, avoid hidden costs, and ensure smooth execution.</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Office & Workplace Fit-Outs -->
+                                    <div class="flex items-start space-x-4">
+                                        <div class="w-10 h-10 bg-white flex items-center justify-center text-gold-500 shrink-0 border border-gray-200">
+                                            <i class="fa-solid fa-briefcase text-lg"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-sm font-bold text-charcoal-900">Office & Workplace Fit-Outs</h4>
+                                            <p class="text-xs text-charcoal-500 mt-1">Extensive portfolio of corporate office fit-out cases and budget guidelines, leveraging 3D VR technology to help you discover the perfect workplace aesthetic.</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Independent Villa & Village House Renovation -->
+                                    <div class="flex items-start space-x-4">
+                                        <div class="w-10 h-10 bg-white flex items-center justify-center text-gold-500 shrink-0 border border-gray-200">
+                                            <i class="fa-solid fa-house text-lg"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-sm font-bold text-charcoal-900">Villa & Village House Renovation</h4>
+                                            <p class="text-xs text-charcoal-500 mt-1">Comprehensive showcase of independent villa and village house cases with price references, utilizing 3D VR displays to match your personal design style.</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Restaurant & Retail Store Fit-Outs -->
+                                    <div class="flex items-start space-x-4">
+                                        <div class="w-10 h-10 bg-white flex items-center justify-center text-gold-500 shrink-0 border border-gray-200">
+                                            <i class="fa-solid fa-store text-lg"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-sm font-bold text-charcoal-900">Restaurant & Retail Store Fit-Outs</h4>
+                                            <p class="text-xs text-charcoal-500 mt-1">Dedicated dining and commercial shop fit-out cases with budget guidelines, featuring 3D VR representations to establish your ideal brand identity.</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- High-End Luxury Residences -->
+                                    <div class="flex items-start space-x-4">
+                                        <div class="w-10 h-10 bg-white flex items-center justify-center text-gold-500 shrink-0 border border-gray-200">
+                                            <i class="fa-solid fa-crown text-lg"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-sm font-bold text-charcoal-900">High-End Luxury Residences</h4>
+                                            <p class="text-xs text-charcoal-500 mt-1">Bespoke luxury residential designs in diverse styles, expanding spatial openness through shared-space concepts while preserving structural grandeur.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
+
+        <!-- ================= PAGE 5: CONTACT US (DEDICATED PAGE) ================= -->
+        <div id="page-contact" class="page-view">
+            <section class="py-16 bg-white min-h-[80vh]">
+                <div class="max-w-7xl mx-auto px-6 md:px-12">
+                    
+                    <div class="mb-12 border-b border-gray-100 pb-8">
+                        <span class="text-xs uppercase tracking-superwide text-gold-500 font-semibold block mb-2">Get In Touch</span>
+                        <h1 class="text-3xl sm:text-5xl font-light text-charcoal-900 mb-4">Contact ECHOUSE DESIGN</h1>
+                        <p class="text-xs text-charcoal-500 max-w-xl">
+                            Reach out to our senior interior architectural team for inquiries, site visits, or quotation bookings.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                        <!-- Contact Info Column -->
+                        <div class="lg:col-span-5 space-y-6">
+                            <!-- Address -->
+                            <div class="p-6 bg-warm-sand border border-warm-cream flex items-start space-x-4">
+                                <div class="w-10 h-10 bg-charcoal-900 text-gold-400 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div>
+                                    <span class="text-[10px] uppercase font-bold text-gold-600 block mb-1">Hong Kong Studio</span>
+                                    <h4 class="text-sm font-bold text-charcoal-900 mb-1">ECHOUSE DESIGN</h4>
+                                    <p class="text-xs text-charcoal-600">Room 506‑507, 5/F, Wah Shun Plaza, Shek Mun, Sha Tin, Hong Kong</p>
+                                </div>
+                            </div>
+
+                            <!-- Hotline -->
+                            <div class="p-6 bg-warm-sand border border-warm-cream flex items-start space-x-4">
+                                <div class="w-10 h-10 bg-charcoal-900 text-gold-400 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <div>
+                                    <span class="text-[10px] uppercase font-bold text-gold-600 block mb-1">Official Hotline</span>
+                                    <h4 class="text-sm font-bold text-charcoal-900">+852 3492 2411</h4>
+                                    <p class="text-xs text-charcoal-500">Customer Support & Consultations</p>
+                                </div>
+                            </div>
+
+                            <!-- WhatsApp -->
+                            <a href="https://wa.me/85295607556" target="_blank" class="p-6 bg-emerald-50 border border-emerald-100 flex items-start space-x-4 hover:bg-emerald-100/60 transition-colors block">
+                                <div class="w-10 h-10 bg-emerald-600 text-white flex items-center justify-center shrink-0">
+                                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                                </div>
+                                <div>
+                                    <span class="text-[10px] uppercase font-bold text-emerald-700 block mb-1">Instant VIP Chat</span>
+                                    <h4 class="text-sm font-bold text-charcoal-900">+852 9560 7556</h4>
+                                    <p class="text-xs text-charcoal-600">Direct WhatsApp Project Inquiry</p>
+                                </div>
+                            </a>
+
+                            <!-- Business Hours -->
+                            <div class="p-6 bg-warm-sand border border-warm-cream flex items-start space-x-4">
+                                <div class="w-10 h-10 bg-charcoal-900 text-gold-400 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-clock"></i>
+                                </div>
+                                <div>
+                                    <span class="text-[10px] uppercase font-bold text-gold-600 block mb-1">Opening Hours</span>
+                                    <h4 class="text-sm font-bold text-charcoal-900">Monday - Sunday: 09:00 - 19:00</h4>
+                                    <p class="text-[11px] text-charcoal-500 mt-1">Appointment required for visits between 19:00 - 21:00 via WhatsApp</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Form Column -->
+                        <div class="lg:col-span-7 bg-warm-sand p-8 md:p-10 border border-warm-cream">
+                            <h3 class="text-2xl font-light text-charcoal-900 mb-2">Request Free Quotation</h3>
+                            <p class="text-xs text-charcoal-500 uppercase tracking-widest mb-6">Fill out the form below for a response within 24 hours.</p>
+
+                            <form id="contact-page-form" onsubmit="handleFormSubmit(event)">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                    <div>
+                                        <label class="block text-xs uppercase font-semibold text-charcoal-700 mb-2">Full Name *</label>
+                                        <input type="text" required placeholder="e.g. Alexander Wright" class="w-full px-4 py-3 bg-white border border-gray-200 text-xs focus:border-gold-400 focus:outline-none">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs uppercase font-semibold text-charcoal-700 mb-2">Phone / WhatsApp *</label>
+                                        <input type="tel" required placeholder="+852 9123 4567" class="w-full px-4 py-3 bg-white border border-gray-200 text-xs focus:border-gold-400 focus:outline-none">
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="block text-xs uppercase font-semibold text-charcoal-700 mb-2">Property Category</label>
+                                    <select class="w-full px-4 py-3 bg-white border border-gray-200 text-xs focus:border-gold-400 focus:outline-none">
+                                        <option value="private">Private Housing</option>
+                                        <option value="hos">HOS Flat</option>
+                                        <option value="public">Public Housing</option>
+                                        <option value="commercial">Commercial / Office</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="block text-xs uppercase font-semibold text-charcoal-700 mb-2">Property Location & Sq.Ft.</label>
+                                    <input type="text" placeholder="e.g. Sai Kung Villa, 4,000 sq.ft." class="w-full px-4 py-3 bg-white border border-gray-200 text-xs focus:border-gold-400 focus:outline-none">
+                                </div>
+
+                                <div class="mb-6">
+                                    <label class="block text-xs uppercase font-semibold text-charcoal-700 mb-2">Project Requirements</label>
+                                    <textarea rows="4" placeholder="Tell us about your timeline, design preferences, or budget range..." class="w-full px-4 py-3 bg-white border border-gray-200 text-xs focus:border-gold-400 focus:outline-none"></textarea>
+                                </div>
+
+                                <button type="submit" class="btn-gold w-full py-4 text-xs uppercase tracking-widest font-semibold flex items-center justify-center space-x-2">
+                                    <span>Submit Consultation Request</span>
+                                    <i class="fa-solid fa-paper-plane text-xs"></i>
+                                </button>
+                            </form>
+
+                            <div id="form-success-msg" class="hidden mt-6 p-6 bg-emerald-50 border border-emerald-200 text-center">
+                                <i class="fa-solid fa-circle-check text-3xl text-emerald-600 mb-2"></i>
+                                <h4 class="text-sm font-bold text-charcoal-900 mb-1">Inquiry Received</h4>
+                                <p class="text-xs text-charcoal-600">Thank you! Our design team will get back to you within 24 hours.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+
+    <!-- ARTICLE READING SUBPAGE MODAL -->
+    <div id="article-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+        <div class="bg-white max-w-4xl w-full border border-warm-cream relative p-8 md:p-12 max-h-[90vh] overflow-y-auto my-8">
+            <button onclick="closeArticleModal()" class="absolute top-6 right-6 w-10 h-10 bg-charcoal-900 text-white flex items-center justify-center hover:bg-gold-500 transition-colors">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <span id="article-cat" class="text-[10px] uppercase tracking-widest font-bold text-gold-600 block mb-2">Category</span>
+            <h2 id="article-title" class="text-2xl md:text-3xl font-light text-charcoal-900 mb-6">Article Title</h2>
+            <div id="article-body" class="prose max-w-none text-xs md:text-sm text-charcoal-700 leading-relaxed space-y-4 border-t border-gray-100 pt-6">
+                <!-- Content injected via JavaScript -->
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-gray-100 flex justify-between items-center">
+                <button onclick="closeArticleModal()" class="px-6 py-2.5 bg-gray-100 text-charcoal-800 text-xs uppercase tracking-widest font-semibold hover:bg-gray-200">
+                    Back to Tips
+                </button>
+                <button onclick="closeArticleModal(); navigateTo('contact');" class="btn-gold px-6 py-2.5 text-xs uppercase tracking-widest font-semibold">
+                    Inquire About This Service
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- PROJECT DETAIL SHOWCASE MODAL -->
+    <div id="project-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+        <div class="bg-white max-w-5xl w-full border border-warm-cream relative my-8 shadow-2xl overflow-hidden">
+            <button onclick="closeProjectModal()" class="absolute top-4 right-4 z-30 w-10 h-10 bg-charcoal-900 text-white flex items-center justify-center hover:bg-gold-500 transition-colors">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 max-h-[85vh] overflow-y-auto">
+                <div class="lg:col-span-7 bg-warm-sand p-6 space-y-4">
+                    <div class="aspect-[16/10] overflow-hidden border border-warm-cream">
+                        <img id="modal-img-main" src="" class="w-full h-full object-cover">
+                    </div>
+                    <div class="grid grid-cols-3 gap-2" id="modal-thumbnails"></div>
+                </div>
+
+                <div class="lg:col-span-5 p-6 md:p-8 flex flex-col justify-between">
+                    <div>
+                        <span id="modal-type" class="text-[10px] uppercase tracking-widest text-gold-600 font-bold block mb-2">Category</span>
+                        <h3 id="modal-title" class="text-2xl font-light text-charcoal-900 mb-4">Project Title</h3>
+                        
+                        <div class="space-y-2 py-4 border-y border-gray-100 text-xs mb-4">
+                            <div class="flex justify-between">
+                                <span class="text-charcoal-500">Location:</span>
+                                <span id="modal-loc" class="font-semibold text-charcoal-900">Hong Kong</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-charcoal-500">Floor Area:</span>
+                                <span id="modal-area" class="font-semibold text-charcoal-900">0 sq.ft.</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-charcoal-500">Project Budget:</span>
+                                <span id="modal-budget" class="font-semibold text-gold-600">HKD $0</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-charcoal-500">Design Style:</span>
+                                <span id="modal-style" class="font-semibold text-charcoal-800">Modern Luxury</span>
+                            </div>
+                        </div>
+
+                        <p id="modal-desc" class="text-charcoal-600 text-xs leading-relaxed mb-6"></p>
+                    </div>
+
+                    <button onclick="closeProjectModal(); navigateTo('contact');" class="btn-gold w-full py-3.5 text-xs uppercase tracking-widest font-semibold flex items-center justify-center space-x-2">
+                        <span>INQUIRE SIMILAR DESIGN</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer class="bg-charcoal-900 text-white pt-16 pb-12 border-t border-charcoal-800">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-charcoal-800">
+                <div class="lg:col-span-1">
+                    <a href="javascript:void(0)" onclick="navigateTo('home')" class="inline-block mb-4">
+                        <img src="https://imgur.com/6S7WCF9.jpg" alt="ECHOUSE DESIGN" class="h-12 w-auto object-contain">
+                    </a>
+                    <p class="text-charcoal-400 text-xs leading-relaxed">
+                        Hong Kong's premier interior architectural firm with over 10 years of trusted project execution.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-xs uppercase tracking-widest text-gold-400 font-bold mb-4">Pages Navigation</h4>
+                    <ul class="space-y-2 text-xs text-charcoal-400">
+                        <li><button onclick="navigateTo('home')" class="hover:text-white">Home</button></li>
+                        <li><button onclick="navigateTo('portfolio')" class="hover:text-white">Portfolio Gallery</button></li>
+                        <li><button onclick="navigateTo('tips')" class="hover:text-white">Renovation Tips</button></li>
+                        <li><button onclick="navigateTo('about')" class="hover:text-white">About Us</button></li>
+                        <li><button onclick="navigateTo('contact')" class="hover:text-white">Contact Us</button></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs uppercase tracking-widest text-gold-400 font-bold mb-4">Sectors</h4>
+                    <ul class="space-y-2 text-xs text-charcoal-400">
+                        <li><button onclick="navigateTo('portfolio', 'private')" class="hover:text-white">Private Housing</button></li>
+                        <li><button onclick="navigateTo('portfolio', 'hos')" class="hover:text-white">HOS Flats</button></li>
+                        <li><button onclick="navigateTo('portfolio', 'public')" class="hover:text-white">Public Housing</button></li>
+                        <li><button onclick="navigateTo('portfolio', 'commercial')" class="hover:text-white">Commercial & Office</button></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs uppercase tracking-widest text-gold-400 font-bold mb-4">Hong Kong Studio</h4>
+                    <p class="text-xs text-charcoal-400 leading-relaxed mb-2">Room 506‑507, 5/F, Wah Shun Plaza, Shek Mun, Sha Tin</p>
+                    <p class="text-xs text-charcoal-400 mb-1">Hotline: +852 3492 2411</p>
+                    <p class="text-xs text-charcoal-400">WhatsApp: +852 9560 7556</p>
+                </div>
+            </div>
+
+            <div class="pt-8 text-center text-xs text-charcoal-500">
+                &copy; 2026 ECHOUSE DESIGN. All Rights Reserved. Luxury Interior Architecture & Renovation Hong Kong.
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- JAVASCRIPT: Page Router & Data Handlers -->
+    <script>
+        // Mobile Navigation Drawer Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileBtn && mobileMenu) {
+            mobileBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Single Page Navigation Router (Switches page views without reloading)
+        function navigateTo(pageId, categoryFilter = null) {
+            // Hide all pages
+            document.querySelectorAll('.page-view').forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Remove active style from desktop nav links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active-link');
+            });
+
+            // Activate target page
+            const targetPage = document.getElementById('page-' + pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+
+            // Update nav button active indicator
+            const activeNavBtn = document.getElementById('nav-' + pageId);
+            if (activeNavBtn) {
+                activeNavBtn.classList.add('active-link');
+            }
+
+            // Close mobile drawer if open
+            if (mobileMenu) {
+                mobileMenu.classList.add('hidden');
+            }
+
+            // Scroll to top smooth
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // If navigating to portfolio with a category filter
+            if (pageId === 'portfolio' && categoryFilter) {
+                filterPortfolio(categoryFilter);
+            }
+        }
+
+        // Portfolio Cases Data Structure
+        const portfolioCases = [
+            {
+                id: 1,
+                cat: "private",
+                catLabel: "Private Housing",
+                title: "Kap Pin Tsuen Chung Li Villa • Sai Kung",
+                loc: "Kap Pin Tsuen Chung Li, Sai Kung, New Territories",
+                area: "4,000 sq.ft.",
+                budget: "HKD 1,680,000",
+                style: "Modern Minimalist",
+                desc: "Spacious 4,000 sq.ft. village house renovation with an open-plan layout, warm timber finishes, bright natural lighting from large windows, custom-built storage solutions, and comfortable multi-functional living zones.",
+                photos: [
+                    "https://imgur.com/BCACwFM.jpg",
+                    "https://imgur.com/3pI7Qih.jpg",
+                    "https://imgur.com/CulE4df.jpg",
+                    "https://imgur.com/OoOgTSr.jpg",
+                    "https://imgur.com/KrzNbVD.jpg",
+                    "https://imgur.com/Mu38MKe.jpg"
+                ]
+            },
+            {
+                id: 2,
+                cat: "private",
+                catLabel: "Private Housing",
+                title: "Solaria Estate • Tai Po",
+                loc: "Solaria, Tai Po, New Territories",
+                area: "2,100 sq.ft.",
+                budget: "HKD 1,500,000",
+                style: "Nordic Minimalist",
+                desc: "Serene 2,100 sq.ft. Nordic-inspired private residence in Tai Po featuring natural organic light, warm wood textures, an elegant neutral palette, custom built-in storage joinery, and an open functional layout.",
+                photos: [
+                    "https://imgur.com/f75VBdq.jpg",
+                    "https://imgur.com/Err7FQi.jpg",
+                    "https://imgur.com/HXlOu56.jpg",
+                    "https://imgur.com/DY2igbv.jpg",
+                    "https://imgur.com/na3b0ZS.jpg",
+                    "https://imgur.com/p3z0p0S.jpg"
+                ]
+            },
+            {
+                id: 3,
+                cat: "private",
+                catLabel: "Private Housing",
+                title: "Oceanfront Villa • Repulse Bay",
+                loc: "Repulse Bay Road, Hong Kong Island",
+                area: "2,300 sq.ft.",
+                budget: "HKD 2,500,000",
+                style: "Modern Luxury Villa",
+                desc: "Sophisticated 2,300 sq.ft. beachfront residence in Repulse Bay. Clean geometric architectural lines, floor-to-ceiling glass paneling, tailored marble accents, and a tranquil open-plan living layout filled with natural coastal light.",
+                photos: [
+                    "https://imgur.com/8CdWdNO.jpg",
+                    "https://imgur.com/8jahLZo.jpg",
+                    "https://imgur.com/i2B44nd.jpg",
+                    "https://imgur.com/yAl0v6Q.jpg",
+                    "https://imgur.com/MbmrDIb.jpg",
+                    "https://imgur.com/EXmg55p.jpg",
+                    "https://imgur.com/n2O0VD6.jpg",
+                    "https://imgur.com/DwzpSMx.jpg",
+                    "https://imgur.com/TR5kZ0e.jpg"
+                ]
+            },
+            {
+                id: 4,
+                cat: "private",
+                catLabel: "Private Housing",
+                title: "Conifer Lodge Villa • Kau To Shan",
+                loc: "Kau To Shan, Sha Tin, New Territories",
+                area: "770 sq.ft.",
+                budget: "HKD 1,000,000",
+                style: "Modern Minimalist",
+                desc: "Sophisticated 770 sq.ft. hillside residence in Kau To Shan featuring clean geometric lines, warm natural timber, open spatial flow, and tailored interior joinery.",
+                photos: [
+                    "https://imgur.com/aKRJQIF.jpg",
+                    "https://imgur.com/OjRlv1O.jpg",
+                    "https://imgur.com/54BAlKq.jpg",
+                    "https://imgur.com/MOk7SYb.jpg",
+                    "https://imgur.com/GTYYf1I.jpg",
+                    "https://imgur.com/rfgEyKA.jpg",
+                    "https://imgur.com/j3Iymol.jpg",
+                    "https://imgur.com/tZaxEOj.jpg",
+                    "https://imgur.com/aDQuZhC.jpg"
+                ]
+            },
+            {
+                id: 5,
+                cat: "private",
+                catLabel: "Private Housing",
+                title: "Beverly Coast Villa • Tai Po",
+                loc: "Beverly Coast, Tai Po, New Territories",
+                area: "2,006 sq.ft.",
+                budget: "HKD 1,850,000",
+                style: "Modern Architectural Elegance",
+                desc: "Luxurious 2,006 sq.ft. multi-story villa in Tai Po featuring contemporary architectural space planning, rich timber wall paneling, floor-to-ceiling daylighting, concealed storage joinery, and an open entertaining layout.",
+                photos: [
+                    "https://imgur.com/ROGAIiR.jpg",
+                    "https://imgur.com/9of66X2.jpg",
+                    "https://imgur.com/FCG1a1T.jpg",
+                    "https://imgur.com/azYbaWm.jpg",
+                    "https://imgur.com/8BAUPaE.jpg",
+                    "https://imgur.com/iSM1rq5.jpg",
+                    "https://imgur.com/wsqjMnd.jpg",
+                    "https://imgur.com/2FCIjT4.jpg",
+                    "https://imgur.com/Df2pxCe.jpg",
+                    "https://imgur.com/Ubt6zjg.jpg",
+                    "https://imgur.com/Epiu4iJ.jpg"
+                ]
+            },
+            {
+                id: 6,
+                cat: "private",
+                catLabel: "Private Housing",
+                title: "Hong Lok Yuen Villa • Tai Po",
+                loc: "Hong Lok Yuen, Tai Po, New Territories",
+                area: "3,200 sq.ft.",
+                budget: "HKD 3,500,000",
+                style: "Modern Luxury Villa",
+                desc: "Expansive 3,200 sq.ft. luxury estate in Hong Lok Yuen featuring double-height ceiling space planning, bespoke joinery, warm ambient illumination, premium marble floor tiles, and an open layout suited for executive family living.",
+                photos: [
+                    "https://imgur.com/aOFWdeV.jpg",
+                    "https://imgur.com/TpQCrB7.jpg",
+                    "https://imgur.com/DXFyHKi.jpg",
+                    "https://imgur.com/5AfNRAw.jpg",
+                    "https://imgur.com/mQUoXXU.jpg",
+                    "https://imgur.com/M2ueb30.jpg",
+                    "https://imgur.com/BRe1M3M.jpg",
+                    "https://imgur.com/6mYF3Gy.jpg",
+                    "https://imgur.com/c3ijn9N.jpg",
+                    "https://imgur.com/hRE26UA.jpg",
+                    "https://imgur.com/JssnT7L.jpg"
+                ]
+            },
+            {
+                id: 7,
+                cat: "hos",
+                catLabel: "HOS Flat",
+                title: "Fu Hong Court • Tseung Kwan O",
+                loc: "Tseung Kwan O, Kowloon East",
+                area: "520 sq.ft.",
+                budget: "HKD 480,000",
+                style: "Modern Japanese Muji",
+                desc: "Custom tatami platform storage, white oak veneer millwork, slatted wooden partition sliding door, and compact open kitchen.",
+                photos: []
+            },
+            {
+                id: 8,
+                cat: "public",
+                catLabel: "Public Housing",
+                title: "Choi Ming Estate • Tseung Kwan O",
+                loc: "Tseung Kwan O, New Territories",
+                area: "380 sq.ft.",
+                budget: "HKD 350,000",
+                style: "Clean Nordic Storage-Focused",
+                desc: "Clever multi-functional hidden storage beds, full-height entryway shoe cabinet, and bright space-enlarging glass panels.",
+                photos: []
+            },
+            {
+                id: 9,
+                cat: "commercial",
+                catLabel: "Commercial / Office",
+                title: "Central Executive Showroom Suite",
+                loc: "Central, Hong Kong Island",
+                area: "1,800 sq.ft.",
+                budget: "HKD 1,200,000",
+                style: "Corporate Luxury Elegance",
+                desc: "Acoustic glass meeting suites, marble reception desk, linear ambient lighting, and high-traffic commercial flooring.",
+                photos: []
+            }
+        ];
+
+        // Render Portfolio Grid
+        function renderPortfolio(cat = 'all') {
+            const container = document.getElementById('portfolio-grid');
+            if (!container) return;
+
+            container.innerHTML = '';
+
+            const filtered = cat === 'all' ? portfolioCases : portfolioCases.filter(c => c.cat === cat);
+
+            filtered.forEach(item => {
+                const card = document.createElement('div');
+                card.className = "bg-warm-sand border border-warm-cream hover:border-gold-400 transition-all group cursor-pointer overflow-hidden";
+                card.onclick = () => openProjectModal(item.id);
+
+                const hasPhoto = item.photos && item.photos.length > 0;
+                const imgSrc = hasPhoto ? item.photos[0] : '';
+
+                card.innerHTML = `
+                    <div class="relative aspect-[4/3] bg-charcoal-800 flex items-center justify-center overflow-hidden">
+                        ${hasPhoto 
+                            ? `<img src="${imgSrc}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">`
+                            : `<div class="text-center p-6"><i class="fa-solid fa-image text-2xl text-gold-400/50 mb-2 block"></i><span class="text-[10px] uppercase tracking-widest text-charcoal-400">Photos Awaiting Upload</span></div>`
+                        }
+                        <div class="absolute top-3 right-3 bg-charcoal-900/90 text-white text-[9px] font-semibold tracking-widest uppercase px-2.5 py-1">
+                            ${item.area}
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-[10px] uppercase tracking-widest text-gold-600 font-bold block mb-1">${item.catLabel}</span>
+                        <h3 class="text-lg font-normal text-charcoal-900 group-hover:text-gold-500 transition-colors mb-2">${item.title}</h3>
+                        <p class="text-xs text-charcoal-500 line-clamp-2 leading-relaxed mb-4">${item.desc}</p>
+                        <span class="text-[10px] font-semibold uppercase tracking-widest text-charcoal-900 flex items-center space-x-1 group-hover:text-gold-500">
+                            <span>View Full Project</span>
+                            <i class="fa-solid fa-arrow-right text-[9px]"></i>
+                        </span>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Filter Portfolio Tabs
+        function filterPortfolio(cat) {
+            document.querySelectorAll('.port-tab-btn').forEach(btn => {
+                btn.classList.remove('border-gold-400', 'bg-gold-400', 'text-white');
+                btn.classList.add('border-gray-200', 'text-charcoal-700');
+            });
+
+            const activeBtn = document.getElementById('tab-' + cat);
+            if (activeBtn) {
+                activeBtn.classList.remove('border-gray-200', 'text-charcoal-700');
+                activeBtn.classList.add('border-gold-400', 'bg-gold-400', 'text-white');
+            }
+
+            renderPortfolio(cat);
+        }
+
+        // Open Project Modal
+        function openProjectModal(id) {
+            const item = portfolioCases.find(c => c.id === id);
+            if (!item) return;
+
+            document.getElementById('modal-title').innerText = item.title;
+            document.getElementById('modal-type').innerText = item.catLabel;
+            document.getElementById('modal-loc').innerText = item.loc;
+            document.getElementById('modal-area').innerText = item.area;
+            document.getElementById('modal-budget').innerText = item.budget;
+            document.getElementById('modal-style').innerText = item.style;
+            document.getElementById('modal-desc').innerText = item.desc;
+
+            const mainImg = document.getElementById('modal-img-main');
+            const thumbContainer = document.getElementById('modal-thumbnails');
+            thumbContainer.innerHTML = '';
+
+            if (item.photos && item.photos.length > 0) {
+                mainImg.src = item.photos[0];
+                item.photos.forEach((src, idx) => {
+                    const thumb = document.createElement('div');
+                    thumb.className = `aspect-square overflow-hidden cursor-pointer border ${idx === 0 ? 'border-gold-400' : 'border-gray-200'}`;
+                    thumb.innerHTML = `<img src="${src}" class="w-full h-full object-cover">`;
+                    thumb.onclick = () => {
+                        mainImg.src = src;
+                        thumbContainer.querySelectorAll('div').forEach(d => d.classList.replace('border-gold-400', 'border-gray-200'));
+                        thumb.classList.replace('border-gray-200', 'border-gold-400');
+                    };
+                    thumbContainer.appendChild(thumb);
+                });
+            } else {
+                mainImg.src = '';
+                mainImg.alt = "Photos awaiting upload";
+            }
+
+            document.getElementById('project-modal').classList.remove('hidden');
+        }
+
+        function closeProjectModal() {
+            document.getElementById('project-modal').classList.add('hidden');
+        }
+
+        // Renovation Tips Articles Full Articles Database
+        const tipsDatabase = {
+            1: {
+                cat: "Tile & Material Selection",
+                title: "Summit Ceramic Tiles Guide: Exclusive HK EcMall Distribution & Anti-Trap Tips",
+                body: `
+                    <p>When selecting floor and wall tiles for Hong Kong residential renovations, homeowners often fear receiving counterfeit goods, inconsistent color batches, or paying inflated retail markup prices. <strong>Summit Ceramics (薩米特磁磚)</strong> is widely recognized as one of China's top-tier porcelain and ceramic manufacturers, celebrated for ultra-low water absorption, high abrasion resistance, and sleek modern aesthetic patterns.</p>
+                    
+                    <div class="my-6 overflow-hidden border border-warm-cream shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=1000&q=80" alt="Summit Ceramic Tiles Display" class="w-full h-64 md:h-80 object-cover">
+                        <span class="block bg-warm-sand px-4 py-2 text-[11px] text-charcoal-500 text-center italic">High-density porcelain and large-format marble tiles require strict quality control during manufacturing.</span>
+                    </div>
+
+                    <h4 class="text-base font-bold text-charcoal-900 mt-6 mb-2">1. Exclusive Distribution via EcMall in Hong Kong</h4>
+                    <p>In Hong Kong, Summit Ceramic Tiles are officially and exclusively distributed by <strong>EcMall</strong>. By purchasing directly through EcMall rather than unverified street vendors or overseas gray market importers, clients are guaranteed 100% authentic Grade-A factory stock complete with manufacturer warranties and batch verification.</p>
+
+                    <h4 class="text-base font-bold text-charcoal-900 mt-6 mb-2">2. Saving 20% to 40% Compared to Street Retail Prices</h4>
+                    <p>Traditional brick-and-mortar tile shops in Mong Kok or Wan Chai carry heavy storefront overheads that are passed down to buyers. EcMall operates a direct supply chain and a massive 2,000+ sq.ft. showroom in Shek Mun, Sha Tin, passing savings of 20% to 40% directly to homeowners while providing access to over 1,000 tile styles.</p>
+
+                    <div class="my-6 overflow-hidden border border-warm-cream shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1000&q=80" alt="Living Room Floor Tile Application" class="w-full h-64 md:h-80 object-cover">
+                        <span class="block bg-warm-sand px-4 py-2 text-[11px] text-charcoal-500 text-center italic">Large format 800x800mm Summit porcelain tiles applied in an open-plan modern residence.</span>
+                    </div>
+
+                    <h4 class="text-base font-bold text-charcoal-900 mt-6 mb-2">3. Essential Anti-Trap Checklist Before Purchasing</h4>
+                    <ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-charcoal-700">
+                        <li><strong>Batch Code Verification:</strong> Always verify that all boxes share identical batch numbers to prevent color shade variation across living room floors.</li>
+                        <li><strong>Water Absorption Test:</strong> Premium porcelain floor tiles must feature a water absorption rate of less than 0.5% (E ≤ 0.5%) to withstand humid Hong Kong winters.</li>
+                        <li><strong>Edge Flatness & Trueness:</strong> Inspect rectifying edges for flatness to ensure narrow, crisp 1.5mm to 2mm grout joint lines without lip page.</li>
+                    </ul>
+                `
+            },
+            2: {
+                cat: "Masonry & Surfaces",
+                title: "Window Sill Stone Guide: Material Types, Pricing & Maintenance",
+                body: `
+                    <p>Window sills (bay windows) are prominent structural features in many Hong Kong estates. Choosing the right window sill stone is crucial not only for interior aesthetic harmony but also for long-term thermal resistance, UV protection, and dampness prevention along window frames.</p>
+
+                    <div class="my-6 overflow-hidden border border-warm-cream shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1000&q=80" alt="Window Sill Stone Interior" class="w-full h-64 md:h-80 object-cover">
+                        <span class="block bg-warm-sand px-4 py-2 text-[11px] text-charcoal-500 text-center italic">Custom quartz or sintered stone window sills provide high scratch resistance and waterproof insulation.</span>
+                    </div>
+
+                    <h4 class="text-base font-bold text-charcoal-900 mt-6 mb-2">1. Material Comparison: Quartz vs Marble vs Sintered Stone</h4>
+                    <p>Homeowners generally choose between three primary window sill surface materials:</p>
+                    <ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-charcoal-700">
+                        <li><strong>Artificial Quartz Stone:</strong> Highly durable, non-porous, and stain-resistant. Ideal for high direct sunlight areas as it does not absorb condensation water.</li>
+                        <li><strong>Natural Marble:</strong> Offers unmatched organic stone veining and tactile luxury. However, it requires annual sealant application to prevent water spot penetration.</li>
+                        <li><strong>Sintered Stone (Slate):</strong> Ultra-thin (6mm-12mm) yet virtually indestructible. Heat resistant and impervious to UV discoloration.</li>
+                    </ul>
+
+                    <h4 class="text-base font-bold text-charcoal-900 mt-6 mb-2">2. Edge Profiling & Installation Details</h4>
+                    <p>Proper installation requires an edge overhang profile (such as bullnose or chamfered double-edge) with a small drip channel underneath to ensure any window condensation drains forward rather than seeping down interior wall plasterwork.</p>
+
+                    <h4 class="text-base font-bold text-charcoal-900 mt-6 mb-2">3. Maintenance Guidelines</h4>
+                    <p>Wipe window sill stone surfaces weekly with neutral pH stone cleaners. Avoid harsh acidic solvents or abrasive scouring pads that can etch polished stone surfaces.</p>
+                `
+            },
+            3: {
+                cat: "Custom Furniture",
+                title: "Custom TV Cabinets: Dimensions, Materials, Styles & Costing",
+                body: `
+                    <p>As the focal centerpiece of living rooms, custom TV cabinets and feature media walls dictate the overarching visual rhythm of an apartment. Designing custom cabinetry allows homeowners to maximize vertical storage, conceal unsightly wiring, and integrate indirect ambient lighting.</p>
+
+                    <div class="my-6 overflow-hidden border border-warm-cream shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=1000&q=80" alt="Custom TV Cabinet and Feature Wall" class="w-full h-64 md:h-80 object-cover">
+                        <span class="block bg-warm-sand px-4 py-2 text-[11px] text-charcoal-500 text-center italic">Floating TV consoles paired with slatted wooden paneling create horizontal spatial expansion.</span>
+                    </div>
+
+                    <h4 class="text-base font-bold text-charcoal-900 mt-6 mb-2">1. Ergonomic Dimension Rules</h4>
+                    <p>The standard height for a TV console top ranges between 400mm and 500mm above finished floor level, ensuring the middle of the TV screen aligns comfortably with eye level when seated on a couch. Maintain a depth of 350mm to 400mm for media players and game consoles.</p>
+
+                    <h4 class="text-base font-bold text-charcoal-900 mt-6 mb-2">2. Floating vs. Floor-Standing Consoles</h4>
+                    <p><strong>Floating Wall-Mounted Consoles:</strong> Suspended 150mm to 200mm off the floor, facilitating robotic vacuum access and embedding bottom LED strip lighting to lighten visual mass in compact Hong Kong flats.</p>
+
+                    <h4 class="text-base font-bold text-charcoal-900 mt-6 mb-2">3. Healthy E0 Plywood & Hardware Specifications</h4>
+                    <p>Always specify E0 low-formaldehyde multi-layer solid wood plywood with German Blum or Hettich soft-close drawer runners to guarantee durable performance and healthy indoor air quality for children and pets.</p>
+                `
+            },
+            4: {
+                cat: "Tools & Equipment",
+                title: "Hong Kong Hardware Store Guide: Essential Tools & Procurement",
+                body: `
+                    <p>Navigating local hardware stores across Hong Kong can feel overwhelming for homeowners planning DIY updates or monitoring ongoing contractor site execution. Knowing what tools and hardware fittings to source ensures quality craftsmanship.</p>
+
+                    <div class="my-6 overflow-hidden border border-warm-cream shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1000&q=80" alt="Professional Renovation Tools" class="w-full h-64 md:h-80 object-cover">
+                        <span class="block bg-warm-sand px-4 py-2 text-[11px] text-charcoal-500 text-center italic">Essential site inspection instruments including laser distance meters, spirit levels, and socket testers.</span>
+                    </div>
+
+                    <h4 class="text-base font-bold text-charcoal-900 mt-6 mb-2">1. Top Must-Have Site Inspection Tools</h4>
+                    <ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-charcoal-700">
+                        <li><strong>Laser Distance Meter:</strong> Essential for accurate room measurements and custom furniture space planning.</li>
+                        <li><strong>Digital Moisture Meter:</strong> Used during site inspections to test concrete sub-base dampness before laying wood flooring.</li>
+                        <li><strong>Electrical Socket Polarity Tester:</strong> Plugs directly into standard 13A 3-pin sockets to confirm proper grounding and live wire wiring safety.</li>
+                        <li><strong>Hollow Drum Inspection Rod (Tapping Rod):</strong> Used to detect void cavities underneath ceramic tiles.</li>
+                    </ul>
+
+                    <h4 class="text-base font-bold text-charcoal-900 mt-6 mb-2">2. Sourcing Premium Architectural Hardware</h4>
+                    <p>When purchasing door handles, mortise locks, and shower hinges at local hardware stores, opt for Grade 304 stainless steel or solid brass components to resist corrosion caused by sea salt moisture in coastal areas like Tseung Kwan O or Pok Fu Lam.</p>
+                `
+            },
+            5: {
+                cat: "Finishing & Craftsmanship",
+                title: "Tile Grout Powder Masterclass: Functions, Color Matching & Care",
+                body: `
+                    <p>Tile grout powder (掃口粉) fills joints between laid ceramic and stone tiles, playing a vital role in preventing water infiltration, absorbing minor structural tile expansion, and defining the final aesthetic character of tile surfaces.</p>
+
+                    <div class="my-6 overflow-hidden border border-warm-cream shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1000&q=80" alt="Tile Grouting Detail" class="w-full h-64 md:h-80 object-cover">
+                        <span class="block bg-warm-sand px-4 py-2 text-[11px] text-charcoal-500 text-center italic">Precision tile grouting creates seamless water barrier seals in shower stalls and kitchens.</span>
+                    </div>
+
+                    <h4 class="text-base font-bold text-charcoal-900 mt-6 mb-2">1. Polymer Cement Grout vs. Two-Component Epoxy Resin Grout</h4>
+                    <p>While traditional cementitious grout powder is budget-friendly and easy to apply, modern renovations increasingly favor <strong>Epoxy Resin Tile Grout</strong> in wet bathroom environments. Epoxy grout is 100% waterproof, non-porous, highly stain-resistant, and completely impervious to black mold growth.</p>
+
+                    <h4 class="text-base font-bold text-charcoal-900 mt-6 mb-2">2. Color Matching Principles</h4>
+                    <ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-charcoal-700">
+                        <li><strong>Seamless Tonal Matching:</strong> Choose grout powder that closely mirrors the tile shade (e.g. warm gray grout with gray marble tiles) for an expansive, monolithic floor look.</li>
+                        <li><strong>High-Contrast Architectural Grid:</strong> Pair dark charcoal or black grout with white subway wall tiles to create a bold, modern industrial statement.</li>
+                    </ul>
+                `
+            },
+            6: {
+                cat: "Inspection & Quality Audit",
+                title: "Spotting Rental & Handover Traps: 5 Rules & 7 Critical Checkpoints",
+                body: `
+                    <p>Whether taking handover of a newly completed apartment or evaluating a rental property, unverified building defects can lead to major financial disputes and living inconveniences down the road. Our specialists share 5 key verification tactics and 7 essential site inspection checkpoints.</p>
+
+                    <div class="my-6 overflow-hidden border border-warm-cream shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1000&q=80" alt="Apartment Handover Site Inspection" class="w-full h-64 md:h-80 object-cover">
+                        <span class="block bg-warm-sand px-4 py-2 text-[11px] text-charcoal-500 text-center italic">Professional handover inspection prevents hidden water leakage and electrical defects.</span>
+                    </div>
+
+                    <h4 class="text-base font-bold text-charcoal-900 mt-6 mb-2">1. Five Verification Strategies Against Property Traps</h4>
+                    <p>1. Cross-reference official floor plan dimensions against real room boundaries.<br>
+                    2. Check for fresh paint touch-ups that may conceal water seepage stain marks along exterior wall borders.<br>
+                    3. Inspect window frame rubber seal strips for brittleness or decay.<br>
+                    4. Verify structural beam locations to ensure no unauthorized load-bearing wall alterations.<br>
+                    5. Document all pre-existing scratches or defects in writing prior to lease or contract signature.</p>
+
+                    <h4 class="text-base font-bold text-charcoal-900 mt-6 mb-2">2. The Seven Critical Inspection Checkpoints</h4>
+                    <ul class="list-disc pl-5 space-y-2 text-xs md:text-sm text-charcoal-700">
+                        <li><strong>Checkpoint 1: Window Water Resistance:</strong> Spray water along window outer seals to verify air-tightness.</li>
+                        <li><strong>Checkpoint 2: Hollow Tile Drum Test:</strong> Tap tile corners to ensure over 85% adhesive coverage.</li>
+                        <li><strong>Checkpoint 3: Drainage Flow Test:</strong> Pour buckets of water into bathroom floor drains to test gravity flow speed.</li>
+                        <li><strong>Checkpoint 4: Socket Grounding & Polarity:</strong> Verify circuit safety using a socket tester.</li>
+                        <li><strong>Checkpoint 5: Door & Window Lock Operation:</strong> Test all hinges and multipoint locking hardware.</li>
+                        <li><strong>Checkpoint 6: Pipe Hydrostatic Pressure:</strong> Verify water supply pressure across all faucets simultaneously.</li>
+                        <li><strong>Checkpoint 7: Ceiling & Wall Moisture Levels:</strong> Measure wall dampness with a digital moisture probe.</li>
+                    </ul>
+                `
+            }
+        };
+
+        function openTipArticle(id) {
+            const article = tipsDatabase[id];
+            if (!article) return;
+
+            document.getElementById('article-cat').innerText = article.cat;
+            document.getElementById('article-title').innerText = article.title;
+            document.getElementById('article-body').innerHTML = article.body;
+
+            document.getElementById('article-modal').classList.remove('hidden');
+        }
+
+        function closeArticleModal() {
+            document.getElementById('article-modal').classList.add('hidden');
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const successMsg = document.getElementById('form-success-msg');
+            e.target.reset();
+            successMsg.classList.remove('hidden');
+        }
+
+        // Initialize default view on load
+        window.onload = function() {
+            renderPortfolio('all');
+        };
+    </script>
+</body>
+</html>
